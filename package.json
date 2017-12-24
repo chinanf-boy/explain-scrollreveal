@@ -1,0 +1,14 @@
+{
+  "name": "explain-scrollreveal",
+  "version": "1.0.0",
+  "description": "explain scrollreveal easy use anim browser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "explain"
+  ],
+  "author": "yobrave",
+  "license": "MIT"
+}
