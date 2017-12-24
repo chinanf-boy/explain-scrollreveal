@@ -16,7 +16,16 @@
 
 - [ScrollReveal-constructor](#正主(constructor.js))
 
-- 
+- [下一节-reveal](./README.reveal.md)
+
+其他
+
+- [验证支持](#验证支持)
+
+- [修葺平台](#修葺平台)
+
+- [debug](#debug)
+
 ---
 
 本次例子
@@ -245,19 +254,15 @@ next
 
 next
 
+我们需要进入 reveal 函数
+
+`import reveal from './methods/reveal'
+`
+
+[GO reveal](./README.reveal.md)
 
 
-
-
-
-
-
-
-
-
-
-
-
+---
 
 ## 验证支持(isSupported)
 
@@ -270,9 +275,12 @@ ScrollReveal.isSupported = () => transformSupported() && transitionSupported()
 
 ```
 
+`import { isMobile, transformSupported, transitionSupported } from '../utils/browser'
+`
+
 - transformSupported
 
-[scrollreveal/src/util/browser.js](./scrollreveal/src/utils/browser.js#L26)
+[scrollreveal/src/util/browser.js](./scrollreveal/src/utils/browser.js#L29)
 
 ``` js
 export function transformSupported () {
@@ -290,7 +298,22 @@ export function transitionSupported () {
 }
 ```
 
+## 修葺平台
 
+先验证函数
+
+- isMobile
+
+`import { isMobile, transformSupported, transitionSupported } from '../utils/browser'
+`
+
+[scrollreveal/src/util/browser.js](./scrollreveal/src/utils/browser.js#L26)
+
+``` js
+export function isMobile (agent = navigator.userAgent) {
+	return /Android|iPhone|iPad|iPod/i.test(agent)
+}
+```
 ## debug
 
 ``` js
@@ -301,4 +324,3 @@ Object.defineProperty(ScrollReveal, 'debug', {
 	},
 })
 ```
-## 修葺平台
