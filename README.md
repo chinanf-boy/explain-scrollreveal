@@ -359,3 +359,21 @@ export default {
 	},
 }
 ```
+---
+
+## 总结 
+
+[jsbin--](http://jsbin.com/mofazez/edit?html,js,console)
+
+`scrollreveal` 通过 - 传递变量
+
+``` js
+// 实例化
+new function scrollreveal(){
+	this.store // 可以看成全局变量 
+	Object.defineProperty(this, 'delegate', { get: () => delegate.bind(this) }) // 传递全局变量
+}
+
+```
+
+---
