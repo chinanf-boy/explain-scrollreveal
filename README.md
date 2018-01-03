@@ -26,6 +26,10 @@
 
 - [debug](#debug)
 
+- [logger 错误日志](#logger)
+
+- [noop 错误返回](#noop)
+
 ---
 
 本次例子
@@ -323,4 +327,35 @@ Object.defineProperty(ScrollReveal, 'debug', {
 		if (typeof value === 'boolean') _debug = value
 	},
 })
+```
+
+## logger
+
+在 代码中如此使用
+
+`logger.call(this, 'Instantiation aborted.', 'This browser is not supported.')`
+
+``` js
+export function logger (message, ...details) {
+	if (this.constructor.debug && console) {
+		let report = `%cScrollReveal: ${message}`
+		details.forEach(detail => (report += `\n — ${detail}`))
+		console.log(report, 'color: #ea654b;') // eslint-disable-line no-console
+	}
+}
+
+```
+
+## noop
+
+``` js
+export default {
+	clean () {},
+	destroy () {},
+	reveal () {},
+	sync () {},
+	get noop () {
+		return true
+	},
+}
 ```

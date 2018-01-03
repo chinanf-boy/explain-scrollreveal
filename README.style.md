@@ -470,6 +470,8 @@ transform: rotateZ(45deg)
 
 [github](https://github.com/jlmakes/rematrix)
 
+[jsfiddle 实际例子](https://jsfiddle.net/jL4vnh08/)
+
 ``` js
 import { parse, multiply, rotateX, rotateY, rotateZ, scale, translateX, translateY } from 'rematrix'
 ```
