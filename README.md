@@ -12,6 +12,9 @@
 
 ---
 
+![思维导图](./think.png)
+
+---
 本目录
 
 - [ScrollReveal-constructor](#正主(constructor.js))
