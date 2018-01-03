@@ -17,7 +17,7 @@
 ---
 本目录
 
-- [ScrollReveal-constructor](#正主(constructor.js))
+- [ScrollReveal-constructor](#正主-constructor)
 
 - [下一节-reveal](./README.reveal.md)
 
@@ -84,7 +84,7 @@ ok ,正主找到了
 
  explain
 
-## 正主(constructor.js)
+## 正主-constructor
 
 [scrollreveal/src/instance/constructor](scrollreveal/src/instance/constructor)
 

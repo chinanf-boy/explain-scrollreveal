@@ -118,6 +118,8 @@ import { deepAssign, each, getNode, getNodes } from 'tealight'
 
 next
 
+---
+
 ### 目标元素数组获取
 
 代码 39-64
@@ -187,6 +189,8 @@ Object.assign({},{1:'ddd'},{a:'d',1:'d'})
 ```
 
 next 
+
+---
 
 代码 66 - 116 在上面的 `reduce 函数内`
 
@@ -287,6 +291,8 @@ next
 
 ---
 
+代码 118-129
+
 ### 目标缓存-elements
 
 ``` js
@@ -307,6 +313,8 @@ next
 next
 
 ---
+
+代码 131-145
 
 ### 容器缓存-containerBuffer
 
@@ -332,6 +340,8 @@ next
 next
 
 ---
+
+代码 147-163
 
 ### 同步设置-sync
 
