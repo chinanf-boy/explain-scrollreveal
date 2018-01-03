@@ -430,6 +430,12 @@ function getContainerId (node, ...collections) {
 
 ## 工具库-tealight
 
+因 在本 解释 scrollreveal 源码章节 中
+
+作者 修改了 tealight 的代码 , 去掉了许多内容，
+
+> 代码总是要最新最好的，工具库-tealight 的解释 先暂缓
+
 ``` js
 import { deepAssign, each, getNode, getNodes } from 'tealight'
 ```
@@ -461,6 +467,10 @@ export default function getNodes(target) {
 
 ### 工具库-deepAssign
 
+``` js
+
+
+```
 ---
 
 ### 工具库-each
