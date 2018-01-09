@@ -83,6 +83,8 @@ explain 本目录
 
 代码 26-37
 
+每个元素 动画的 间隔时间
+
 ``` js
 	/**
 	 * To start things off, build element collection,
@@ -343,14 +345,14 @@ next
 
 代码 147-163
 
-### 同步设置-sync
+### 异步设置-sync
 
 ``` js
 	/**
 	 * If reveal wasn't invoked by sync, we want to
 	 * make sure to add this call to the history.
 	 */
-	// 默认异步
+	// 默认同步
 	if (!sync) {
 		this.store.history.push({ target, options, interval })
 
