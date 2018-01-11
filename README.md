@@ -13,7 +13,8 @@
 版本 {{ 3.3.6 }}
 
 ---
-scrollreveal-中心是围绕 [`css`: `transition` 提供了一种在更改CSS属性时控制动画速度的方法 ](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions)
+
+`scrollreveal`-中心是围绕 [`css`: `transition` 提供了一种在更改CSS属性时控制动画速度的方法 ](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions)
 
 ---
 

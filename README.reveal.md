@@ -218,7 +218,7 @@ let disabled
 	}
 }
 
-const containerNode = getNode(config.container)//document.body
+const containerNode = getNode(config.container)// document.documentElement
 
 let containerId
 {
@@ -234,9 +234,8 @@ let containerId
 	}
 
 	containerId = getContainerId(containerNode, containerBuffer, this.store.containers)
-	// 从 args[1]打后的变量中找寻，相等containerNode
-	// 获取 {id:id,node:containerNode} 
-	//  return id
+	// 在 本地缓存 containerBuffer 和 全局缓存 this.store.containers 查找
+
 
 	// - containerBuffer 本地缓存
 	// - this.store 	 全局缓存

@@ -9,9 +9,9 @@
 let block = {
         origin   : "top", // 位置
         distance : "24px", // 偏移
-        duration : 1500, // 速度
+        duration : 1500, // 动画发生的总时间
         scale    : 1.05, // 从多大开始
-        delay    : 1000, // 发生时间
+        delay    : 1000, // 动画延迟多少
         reset    : true, // 是否重来动画, 重新出现在视窗时
         viewOffset : { top: 64px;} // 视窗偏移量，默认为 0, 比如-快划出 -视窗-60px，消失动画，超过元素 60px,开始动画 + delay time
       }

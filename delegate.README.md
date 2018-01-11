@@ -6,19 +6,19 @@
 
 ``` js
 
-	// 包裹 目标元素 的 容器元素， 添加事件 scroll 划动, resize 窗口变化 
-	each(this.store.containers, container => {
-		const target = container.node === document.documentElement ? window : container.node
-		target.addEventListener('scroll', this.delegate)
-		target.addEventListener('resize', this.delegate)
-	})
+// 包裹 目标元素 的 容器元素， 添加事件 scroll 划动, resize 窗口变化 
+each(this.store.containers, container => {
+	const target = container.node === document.documentElement ? window : container.node
+	target.addEventListener('scroll', this.delegate)
+	target.addEventListener('resize', this.delegate)
+})
 
-	/**
-	 * Manually invoke delegate once to capture
-	 * element and container dimensions, container
-	 * scroll position, and trigger any valid reveals
-	 */
-    this.delegate()
+/**
+ * Manually invoke delegate once to capture
+ * element and container dimensions, container
+ * scroll position, and trigger any valid reveals
+ */
+this.delegate()
 ```
 
 ---
@@ -38,29 +38,15 @@ import { getGeometry, getScrolled, isElementVisible } from '../../utils/core'
 
 - `animate`
 
->
+> 动画实现
 
 - `sequence`
 
->
+> 动画顺序管理队列
 
 - `each`, `mathSign`, `raf`
 
->
-
-- `getGeometry`,`getScrolled`,`isElementVisible`
-
-	- [`getGeometry`](#getgeometry)
-
-	> 
-
-	- [`getScrolled`](#getscrolled)
-
-	> 获取划动
-
-	- [`isElementVisible`](#iselementvisible)
-
-	> 元素是否 visible, 可使用
+> 兼容性函数
 
 ---
 
@@ -76,10 +62,13 @@ export default function delegate (event = { type: 'init' }, elements = this.stor
 			// 窗口变化
 			if (stale) {
 				container.geometry = getGeometry.call(this, container, true)
+				// 如果 窗口大小重载
 			}
 			const scroll = getScrolled.call(this, container)
+			// 滚动数值
 
 			if (container.scroll) { 
+				// 偏移量
 				container.direction = {
 					x: mathSign(scroll.left - container.scroll.left),
 					y: mathSign(scroll.top - container.scroll.top),
@@ -118,9 +107,23 @@ export default function delegate (event = { type: 'init' }, elements = this.stor
 
 - [this.pristine](./scrollreveal/src/instance/constructor.js#L87)
 
+- `getGeometry`,`getScrolled`,`isElementVisible`
+
+	- [`getGeometry`](#getgeometry)
+
+	> 获取绝对位置
+
+	- [`getScrolled`](#getscrolled)
+
+	> 获取划动
+
+	- [`isElementVisible`](#iselementvisible)
+
+	> 元素是否 visible, 可使用
+
 ---
 
-> 较大函数解释
+工具函数解释
 
 ---
 
@@ -149,14 +152,14 @@ export function getGeometry (target, isContainer) {
 			offsetLeft += node.offsetLeft
 		}
 		node = node.offsetParent
-	} while (node)
+	} while (node) // 遍历元素 父节点，获取 绝对位置
 
 	return {
 		bounds: {
-			top: offsetTop,
-			right: offsetLeft + width,
-			bottom: offsetTop + height,
-			left: offsetLeft,
+			top: offsetTop, // 顶边 离 顶点 距离
+			right: offsetLeft + width,// 右边 离 左边界 距离
+			bottom: offsetTop + height, // 底边 离 顶点 距离
+			left: offsetLeft, //左边 离 左边界 距离
 		},
 		height,
 		width,
@@ -164,16 +167,20 @@ export function getGeometry (target, isContainer) {
 }
 ```
 
+> 遍历元素 父节点，获取 绝对位置 数据
+
 ---
 
 ## getscrolled
 
 ``` js
 export function getScrolled (container) {
+	// document.documentElement 是从 html 标签内所有
+	// 一般 container.node 是 	container: document.documentElement
 	return container.node === document.documentElement
 		? {
-			top: window.pageYOffset,
-			left: window.pageXOffset,
+			top: window.pageYOffset, // 距离顶点的距离
+			left: window.pageXOffset, //  距离左边的距离
 		}
 		: {
 			top: container.node.scrollTop,
@@ -181,6 +188,17 @@ export function getScrolled (container) {
 		}
 }
 ```
+
+> 获取 容器 滚动像素 值
+
+- `default.js`-默认配置
+
+`	container: document.documentElement,`
+
+- [Element.scrollTop 属性可以获取或设置一个元素的内容垂直滚动的像素数](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollTop)
+
+- [Element.scrollLeft 属性可以读取或设置元素滚动条到元素左边的距离](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollLeft)
+
 ---
 
 ## isElementVisible
@@ -188,7 +206,9 @@ export function getScrolled (container) {
 ``` js
 export function isElementVisible (element) {
 	const container = this.store.containers[element.containerId]
+	// 一般来说: container === document.documentElement
 	const viewFactor = Math.max(0, Math.min(1, element.config.viewFactor))
+	// 0
 	const viewOffset = element.config.viewOffset
 
 	const elementBounds = {
@@ -213,5 +233,26 @@ export function isElementVisible (element) {
 		element.styles.position === 'fixed'
 	)
 }
+
 ```
+
+- `viewFactor`-`viewOffset`
+
+defualts.js
+``` js
+	viewFactor: 0.0,
+	viewOffset: {
+		top: 0,
+		right: 0,
+		bottom: 0,
+		left: 0,
+	},
+```
+
+- `elementBounds` `containerBounds`
+
+> 目标元素 是否位于 容器 可见范围内
+
+> 如果，目标元素 position:'fixed', 一定可见
+
 ---
